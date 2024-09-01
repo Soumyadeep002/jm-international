@@ -40,6 +40,7 @@ const Login = () => {
 
       if (response.data.code == 200) {
         localStorage.setItem("token", response.data.token)
+        localStorage.setItem("loggedin", true)
         navigate('/');
       }
 

@@ -3,6 +3,7 @@ import { FaShoppingCart, FaHeart, FaUser, FaSearch } from "react-icons/fa";
 import axios from "axios";
 import baseUrl from "../baseUrl";
 import Logo from "../assets/logo.webp"
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,6 +59,8 @@ const Header = () => {
     window.location.href = "/";
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
     <header className=" bg-orange-500 text-white py-4 px-8 fixed w-full z-50">
@@ -80,8 +83,9 @@ const Header = () => {
         {/* navlinks */}
         <div className="flex items-center space-x-4 relative ">
         <div className="hidden space-x-4 md:flex">
-          <div className="text-xl">Home</div>
-          <div className=" text-xl">About us</div>
+          <Link to="/" className="text-xl">Home</Link>
+          
+          <Link to="/about-us" className=" text-xl">About us</Link>
         </div>
         {/* <div className="text-xl group">Shop
           <div className="absolute right-0 mt-2 w-52 bg-white text-gray-800 rounded-md shadow-lg hidden group-hover:block">
@@ -189,10 +193,10 @@ const Header = () => {
             </>
           )}
 
-        <div className="w-9 flex flex-col items-end gap-[0.475rem] cursor-pointer group  md:hidden">
-            <div className="w-5 h-[0.25rem] group-hover:w-7 duration-300 bg-white"></div>
-            <div className="w-9 h-[0.25rem] group-hover:w-5 duration-300 bg-white"></div>
-            <div className="w-7 h-[0.25rem] group-hover:w-9 duration-300 bg-white"></div>
+        <div className="w-9 flex flex-col items-end gap-[0.475rem] cursor-pointer group  md:hidden" onClick={()=>setIsOpen(!isOpen)}>
+            <div className={`h-[0.25rem] duration-300 relative ${!isOpen? 'w-5 group-hover:w-7': 'rotate-45 translate-y-1.5 w-9'} bg-white`}></div>
+            <div className={`h-[0.25rem] duration-300 relative ${!isOpen? 'w-9 group-hover:w-5': 'hidden'} bg-white`}></div>
+            <div className={`h-[0.25rem] duration-300 relative ${!isOpen? 'w-7 group-hover:w-9': '-rotate-45 -translate-y-1.5 w-9'} bg-white`}></div>
           </div>
         </div>
         
@@ -203,11 +207,11 @@ const Header = () => {
 
 
     </header>
-      <div className="w-screen h-96 fixed z-40 mt-20 md:hidden -translate-y-96 duration-500 bg-orange-500 block">
-        <div className="py-5">Home</div>
-        <div className="py-5">About Us</div>
-        <div className="py-5">Products</div>
-        <div className="py-5">User Account</div>
+      <div className={`w-screen  fixed flex text-white font-semibold justify-cente items-center text-xl flex-col z-40 mt-20 md:hidden  ${isOpen? '': '-translate-y-96'} duration-500 bg-orange-500 block`}>
+        <Link to="/" className="py-5 ">Home</Link>
+        <Link to="/about-us" className="py-5 ">About Us</Link>
+        <Link to="/all-products" className="py-5 ">Products</Link>
+        <Link to="/" className="py-5 ">User Account</Link>
       </div>
     </>
   );

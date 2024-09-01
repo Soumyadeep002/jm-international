@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Orders from "../components/orders";
+import Orders from "../components/order";
 import Wishlist from "../components/wishlist";
 import GiftCards from "../components/giftCards";
 import ContactUs from "../components/ContactUs";
