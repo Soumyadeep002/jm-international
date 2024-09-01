@@ -69,13 +69,16 @@ const Header = () => {
 
       
       <div className="flex items-center space-x-4">
+      <Link to="/">
         <div className="font-bold flex justify-center items-center text-3xl gap-3">
-          <a href="logo">
+          
             <img src={Logo} alt=" Logo" className=" h-14" /> {/* Update logo path */}
-          </a>
+          
           <h1 className="block md:hidden">JM ...</h1>
           <h1 className="hidden md:block">JM INTERNATIONAL</h1>
+          
         </div>
+        </Link>
       </div>
 
     
@@ -86,6 +89,7 @@ const Header = () => {
           <Link to="/" className="text-xl">Home</Link>
           
           <Link to="/about-us" className=" text-xl">About us</Link>
+          <Link to="/all-products" className=" text-xl">Shop</Link>
         </div>
         {/* <div className="text-xl group">Shop
           <div className="absolute right-0 mt-2 w-52 bg-white text-gray-800 rounded-md shadow-lg hidden group-hover:block">

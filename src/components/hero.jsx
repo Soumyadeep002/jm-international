@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,6 +17,9 @@ import Logo from "../assets/logo.webp"
 import { Scrollbar } from 'swiper/modules';
 
 const Hero = () => {
+
+    
+
     return (
         <>
         <Swiper
@@ -34,7 +38,7 @@ const Hero = () => {
                     </div>
                    
                    <p className='text-orange-500 text-3xl text-center w-4/5 md:w-3/4 lg:w-1/2 mt-8'>শুধুমাত্র নদীয়া এবং মুর্শিদাবাদে ডেলিভারি করা হয় DELIVERY: NADIA AND MURSHIDABAD DISTRIC ONLY</p>
-                   <button type="button" className='px-4 py-2 mt-10 text-lg bg-orange-500 text-white rounded-sm'>Shop Now</button>
+                   <Link to="/all-products"><button type="button" className='px-4 py-2 mt-10 text-lg bg-orange-500 text-white rounded-sm'>Shop Now</button></Link>
                 </div>
             </div>
           </SwiperSlide>

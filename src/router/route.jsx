@@ -10,6 +10,7 @@ import Home from "../pages/index";
 import About from "../pages/about";
 import Orders from "../pages/orders";
 import Product from "../pages/product";
+import ProductItem from "../pages/productItem";
 import UserDashboard from "../pages/userDashboard";
 import Cart from "../pages/cart";
 import AdminDashboard from "../pages/admin/admin-dashboard";
@@ -30,6 +31,7 @@ const RouteComponent = () => {
         <Route path="/orders" element={<Orders/>} />
         <Route path="/item" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<ProductItem/>} />
 
         {/* Protected Routes for Logged In Users */}
         <Route
