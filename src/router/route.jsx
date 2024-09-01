@@ -11,6 +11,7 @@ import About from "../pages/about";
 import Orders from "../pages/orders";
 import Product from "../pages/product";
 import UserDashboard from "../pages/userDashboard";
+import Cart from "../pages/cart";
 import AdminDashboard from "../pages/admin/admin-dashboard";
 import NotFound from "./NotFound";
 import PrivateRoute from "./PrivateRoute";
@@ -28,6 +29,7 @@ const RouteComponent = () => {
         <Route path="/all-products" element={<Allproducts/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/item" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* Protected Routes for Logged In Users */}
         <Route

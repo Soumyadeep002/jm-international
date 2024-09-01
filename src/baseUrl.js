@@ -1,2 +1,2 @@
-const baseUrl = "https://ecom-backend-plum.vercel.app/";
+const baseUrl = "https://signatures-responded-sr-na.trycloudflare.com/";
 export default baseUrl;

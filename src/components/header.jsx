@@ -98,8 +98,8 @@ const Header = () => {
           </div> */}
        
           
-          <div className="bg-white p-3 rounded-lg"><FaShoppingCart className="text-2xl  text-orange-500" />
-          </div>
+          <Link to="/cart"><div className="bg-white p-3 rounded-lg"><FaShoppingCart className="text-2xl  text-orange-500" />
+          </div></Link>
          
           
           <div className="relative group">

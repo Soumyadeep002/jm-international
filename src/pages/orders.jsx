@@ -7,7 +7,6 @@ export default function orders() {
       <h1 className='text-3xl lg:text-4xl font-semibold pt-16 pb-10'>My Orders</h1>
         <Order/>
         <Order/>
-
     </div>
   )
 }
