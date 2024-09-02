@@ -106,8 +106,13 @@ const Header = ({cartsize}) => {
           </div> */}
        
           
-          <Link to="/cart"><div className="bg-white p-3 rounded-lg"><FaShoppingCart className="text-2xl  text-orange-500" />
-          <span className="bg-green-600 text-white py-1 px-2 rounded-3xl absolute top-0 bottom-auto translate-x-6 -translate-y-4">{cartsize}</span></div></Link>
+          <Link to="/cart">
+            <div className="bg-white p-3 rounded-lg">
+              <FaShoppingCart className="text-2xl  text-orange-500" />
+              {cartsize>0?<span className="bg-green-600 text-white py-1 px-2 rounded-3xl absolute top-0 bottom-auto translate-x-6 -translate-y-4">{cartsize}</span>:""}
+              
+            </div>
+          </Link>
          
           
           <div className="relative group">
