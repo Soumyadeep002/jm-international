@@ -11,39 +11,62 @@ import Hero from "./components/hero";
 import Footer from "./components/fotter";
 
 function App() {
-
   const [cart, setCart] = useState([]);
 
+  // Handles adding items to the cart
+  const onClickHandle = (id, name, amount) => {
+    let isPresent = false;
+    cart.forEach((cartItem) => {
+      if (id === cartItem.id) isPresent = true;
+    });
 
-  const onClickHandle = (product) => {
-    // console.log(product._id);
-    if (cart.length != 0) {
-      cart.forEach((cartItem)=>{
-        // console.log(cartItem._id);
-        
-        if(product._id === cartItem._id) {
-          console.log("Item already in cart")
-          return
-        }
-        setCart([...cart, product])
-        
-      })
-    }else{
-      setCart([...cart,product])
+    if (isPresent) {
+      alert("Item already in cart!");
+      return;
     }
-    
-    
+    setCart([...cart, { id: id, name: name, amount: amount, quantity: 1 }]);
+    console.log(cart);
   };
-  console.log(cart);
-  
+
+    // Function to remove products with quantity 0
+    const removeZeroQuantity = (id) => {
+      const updatedProducts = cart.filter((product) => product.id !== id);
+      setCart(updatedProducts);
+      console.log("Deleted items with zero quantity");
+    };
+
+  // Handles the quantity change of cart items
+  const handleChange = (product, operation) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => {
+        if (item.id === product.id) {
+          // Handle increment and decrement operations
+          const updatedQuantity = operation === "+"? item.quantity + 1: item.quantity >= 0? item.quantity - 1: 0;
+          
+          return { ...item, quantity: updatedQuantity };
+        }
+        return item;
+      })
+    );
+
+    // Remove items with zero quantity
+    if (product.quantity - 1 == 0 && operation == "-") {
+      removeZeroQuantity(product.id);
+    }
+  };
+
+console.log(cart);
+
 
   return (
-    <div className=" h-full w-full" >
-      {/* Add dynamic routing */}
-      <Header cartsize={cart.length}/>
-      <RouteComponent handleClick={onClickHandle} cart={cart}/>
+    <div className="h-full w-full">
+      <Header cartsize={cart.length} />
+      <RouteComponent
+        handleClick={onClickHandle}
+        cart={cart}
+        handleChange={handleChange}
+      />
       <Footer />
-
     </div>
   );
 }

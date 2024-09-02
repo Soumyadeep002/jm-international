@@ -30,7 +30,7 @@ const RouteComponent = (props) => {
         <Route path="/all-products" element={<Allproducts handleClick={props.handleClick}/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/item" element={<Product />} />
-        <Route path="/cart" element={<Cart cart={props.cart}/>} />
+        <Route path="/cart" element={<Cart cart={props.cart} handleChange={props.handleChange}/>} />
         <Route path="/product/:id" element={<ProductItem/>} />
 
         {/* Protected Routes for Logged In Users */}

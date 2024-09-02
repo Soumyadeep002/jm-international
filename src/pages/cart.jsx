@@ -2,7 +2,20 @@ import React, {useState, useEffect} from 'react'
 import CartItem from '../components/cartItem'
 
 export default function cart(props) {
-    console.log(props.cart);
+
+    const [price, setPrice] = useState()
+    const [delPrice, setdelPrice] = useState(0)
+    
+    const handlePrice = () =>{
+        const total = 0;
+        props.cart.map((product)=>{
+            total += product.quantity * product.price;
+        })
+        setPrice(total);
+    }
+    useEffect(()=>{
+        handlePrice();
+    })
     
   return (
     <div className="mx-auto px-5 py-32">
@@ -56,8 +69,8 @@ export default function cart(props) {
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <ul className="space-y-4">
             {props.cart.map((product) => (
-                <li key={product._id} className="flex justify-between items-center">
-                    <CartItem  product={product}/>
+                <li key={product.id} className="flex justify-between items-center">
+                    <CartItem  product={product} handleChange={props.handleChange}/>
                 </li>
             ))}
 
@@ -67,18 +80,18 @@ export default function cart(props) {
                     <div className="mt-6 border-t pt-4">
                         <div className="flex justify-between text-lg">
                             <span>Item Total</span>
-                            <span>₹14100.00</span>
+                            <span>₹{price}</span>
                         </div>
                         <div className="flex justify-between text-lg">
                             <span>Delivery fees</span>
-                            <span>Free</span>
+                            <span>{delPrice>0?"₹"+delPrice:"Free"}</span>
                         </div>
                     </div>
 
                     <div className="mt-6 border-t pt-4">
                         <div className="flex justify-between text-xl font-semibold">
                             <span>Grand Total</span>
-                            <span>₹14100</span>
+                            <span>₹{price + delPrice}</span>
                         </div>
                     </div>
                 <button type='button' className="mt-8 w-full py-3 bg-orange-500 text-white rounded-lg text-lg">Place Order</button>

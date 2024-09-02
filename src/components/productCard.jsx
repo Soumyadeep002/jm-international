@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const ProductCard = (props) => {
-
-  
+    
 
    return (
     <div className="group my-10 flex w-full max-w-xs flex-col justify-center overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
@@ -26,7 +25,7 @@ const ProductCard = (props) => {
               <span className="text-sm text-slate-900 line-through">₹{props.product.price+300}</span>
             </p>
           </div>
-          <button  type="button" onClick={() => props.onClickHandle(props.product)} className="flex w-full items-center justify-center rounded-md bg-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-orange-300 duration-150">
+          <button  type="button" onClick={() => props.onClickHandle(props.product._id, props.product.name, props.product.price)} className="flex w-full items-center justify-center rounded-md bg-orange-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-orange-300 duration-150">
      
             Add to cart</button>
           </div>
