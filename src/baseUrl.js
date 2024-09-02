@@ -1,2 +1,2 @@
-const baseUrl = "https://signatures-responded-sr-na.trycloudflare.com/";
+const baseUrl = "https://anxiety-class-burning-manual.trycloudflare.com/";
 export default baseUrl;

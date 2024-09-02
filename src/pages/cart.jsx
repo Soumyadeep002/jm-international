@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import CartItem from '../components/cartItem'
 
-export default function cart() {
+export default function cart(props) {
+    console.log(props.cart);
+    
   return (
     <div className="mx-auto px-5 py-32">
    
@@ -53,18 +55,11 @@ export default function cart() {
         <div className="bg-white p-6 rounded-lg ">
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <ul className="space-y-4">
-                <li className="flex justify-between items-center">
-                    <CartItem/>
+            {props.cart.map((product) => (
+                <li key={product._id} className="flex justify-between items-center">
+                    <CartItem  product={product}/>
                 </li>
-                <li className="flex justify-between items-center">
-                    <CartItem/>
-                </li>
-                <li className="flex justify-between items-center">
-                    <CartItem/>
-                </li>
-                <li className="flex justify-between items-center">
-                    <CartItem/>
-                </li>
+            ))}
 
             </ul>
 

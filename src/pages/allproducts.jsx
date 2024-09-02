@@ -3,7 +3,7 @@ import ProductCard from "../components/productCard";
 import axios from "axios";
 import baseUrl from "../baseUrl";
 
-export default function Allproducts() {
+export default function Allproducts(props) {
   const [products, setProducts] = useState([]); // State to store all products
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
@@ -47,7 +47,7 @@ export default function Allproducts() {
       
       {products.data.map((product) => (
       // <h1>{product.name}</h1>
-        <ProductCard key={product._id} product={product}/>
+        <ProductCard key={product._id} product={product} onClickHandle={props.handleClick}/>
         // console.log(product)
        ))}
 

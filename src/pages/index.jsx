@@ -7,7 +7,7 @@ import Hero from "../components/hero";
 import Product from "./product";
 
 
-const Home = () => {
+const Home = (props) => {
   const [products, setProducts] = useState([]); // State to store all products
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
@@ -44,6 +44,10 @@ const Home = () => {
   if (products.length === 0) {
     return <p>No products found.</p>;
   }
+
+
+  
+
   return (
     <>
       <Hero className=" mt-36"/>
@@ -51,7 +55,7 @@ const Home = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full md:w-5/6 lg:w-4/5 xl:w-3/4 mx-auto place-items-center">
       {products.data.map((product) => (
       // <h1>{product.name}</h1>
-        <ProductCard key={product._id} product={product}/>
+        <ProductCard key={product._id} product={product} onClickHandle={props.handleClick}/>
         // console.log(product)
        ))}
       </div>

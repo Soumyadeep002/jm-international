@@ -18,19 +18,19 @@ import NotFound from "./NotFound";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 
-const RouteComponent = () => {
+const RouteComponent = (props) => {
   return (
     
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home handleClick={props.handleClick}/>} />
         <Route path="/about-us" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/all-products" element={<Allproducts/>} />
+        <Route path="/all-products" element={<Allproducts handleClick={props.handleClick}/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/item" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart cart={props.cart}/>} />
         <Route path="/product/:id" element={<ProductItem/>} />
 
         {/* Protected Routes for Logged In Users */}

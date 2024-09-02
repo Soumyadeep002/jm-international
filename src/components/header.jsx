@@ -5,7 +5,11 @@ import baseUrl from "../baseUrl";
 import Logo from "../assets/logo.webp"
 import { Link, NavLink } from "react-router-dom";
 
-const Header = () => {
+
+const Header = ({cartsize}) => {
+
+  
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [cartItems, setCartItems] = useState(0);
@@ -103,7 +107,7 @@ const Header = () => {
        
           
           <Link to="/cart"><div className="bg-white p-3 rounded-lg"><FaShoppingCart className="text-2xl  text-orange-500" />
-          </div></Link>
+          <span className="bg-green-600 text-white py-1 px-2 rounded-3xl absolute top-0 bottom-auto translate-x-6 -translate-y-4">{cartsize}</span></div></Link>
          
           
           <div className="relative group">
