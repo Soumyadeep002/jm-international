@@ -71,14 +71,15 @@ export default function productItem() {
   if (products.length === 0) {
     return <p>No products found.</p>;
   }
-console.log(productItem.data.name+"sdasdsadsd");
+// console.log(productItem.data.name+"sdasdsadsd");
 
 
   return (
     <div className='px-5 pb-9 mx-auto '>
         <div className='pt-32 lg:w-3/4 border-b-[2px] border-slate-200 mx-auto flex flex-col md:flex-row justify-center item center py-16'>
             <div className="left lg:w-1/2 flex justify-center items-center">
-                <img src={`${baseUrl}${productItem.data.images[0]}`} alt="product image" />
+                <img className='w-[90%] rounded-3xl' src={`${baseUrl}${productItem.data.images[1]}`} alt="product image" />
+                {/* <img src={`${baseUrl}${productItem.data.images[0]}`} alt="product image" /> */}
             </div>
             <div className="right lg:w-1/2">
                 <h1 className='text-4xl font-semibold mb-10'>{productItem.data.name}</h1>

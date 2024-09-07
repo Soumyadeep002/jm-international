@@ -42,6 +42,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token)
         localStorage.setItem("loggedin", true)
         navigate('/');
+        window.location.href = "/";
       }
 
     } catch (error) {
@@ -74,11 +75,11 @@ const Login = () => {
                 </h1>
                 <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                     <div>
-                        <label for="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
                         <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  " placeholder="name@company.com" required=""/>
                     </div>
                     <div>
-                        <label for="password" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                         <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  " required=""/>
                     </div>
                     <div className="flex items-center justify-between">

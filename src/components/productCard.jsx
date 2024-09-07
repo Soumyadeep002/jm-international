@@ -13,7 +13,7 @@ const ProductCard = (props) => {
           <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
             <div className=" bg-green-500 z-30 absolute top-auto bottom-3 left-4 text-white px-2 rounded-sm">12% OFF</div>
           <img className="peer absolute top-0 right-0 h-full w-full object-cover" src={`${baseUrl}${props.product.images[0]}` } alt="product image" />
-          <img className="peer absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0" src={`${baseUrl}${props.product.images[0]}`} alt="product image" />
+          <img className="peer absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0" src={`${baseUrl}${props.product.images[1]}`} alt="product image" />
          
           
           </a>

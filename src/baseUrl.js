@@ -1,2 +1,2 @@
-const baseUrl = "https://clicks-mainly-august-four.trycloudflare.com/";
+const baseUrl = "https://regarding-reductions-draft-kelly.trycloudflare.com/";
 export default baseUrl;

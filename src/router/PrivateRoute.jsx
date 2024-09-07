@@ -18,9 +18,11 @@ const PrivateRoute = ({ element }) => {
       }
 
       try {
-        const response = await axios.get(`${baseUrl}/api/me/hello`, {
+        const response = await axios.get(`${baseUrl}api/me/hello`, {
           headers: { "x-auth-token": token }
         });
+        console.log(response);
+        
         setIsAuthorized(response.data.role === "USER");
       } catch (error) {
         console.error("Authorization error:", error);

@@ -11,6 +11,7 @@ import About from "../pages/about";
 import Orders from "../pages/orders";
 import Product from "../pages/product";
 import ProductItem from "../pages/productItem";
+import OrderPlaced from "../pages/orderPlaced";
 import UserDashboard from "../pages/userDashboard";
 import Cart from "../pages/cart";
 import AdminDashboard from "../pages/admin/admin-dashboard";
@@ -25,6 +26,7 @@ const RouteComponent = (props) => {
         {/* Public Routes */}
         <Route path="/" element={<Home handleClick={props.handleClick}/>} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/order-placed" element={<PrivateRoute element={<OrderPlaced />} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/all-products" element={<Allproducts handleClick={props.handleClick}/>} />
@@ -32,6 +34,7 @@ const RouteComponent = (props) => {
         <Route path="/item" element={<Product />} />
         <Route path="/cart" element={<Cart cart={props.cart} handleChange={props.handleChange}/>} />
         <Route path="/product/:id" element={<ProductItem/>} />
+        
 
         {/* Protected Routes for Logged In Users */}
         <Route

@@ -17,25 +17,32 @@ const Header = ({cartsize}) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isUser, setIsUser] = useState(false);
 
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-    const role = localStorage.getItem("role");
-    if (token && storedIsLoggedIn === "true") {
+    // const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    // const role = localStorage.getItem("role");
+    // if (token && storedIsLoggedIn === "true") {
+    if (token) {
       setIsLoggedIn(true);
-      setIsAdmin(role === "ADMIN");
-      setIsUser(role === "USER");
-      fetchUserDetails(token);
+      console.log("Token is true");
+      
+      // setIsAdmin(role === "ADMIN");
+      // setIsUser(role === "USER");
+      // fetchUserDetails(token);
     } else {
       setIsLoggedIn(false);
-      setIsAdmin(false);
-      setIsUser(false);
+      console.log("Token is false");
+
+      // setIsAdmin(false);
+      // setIsUser(false);
     }
   }, []);
 
   const fetchUserDetails = async (token) => {
     try {
-      const response = await axios.get(`${baseUrl}/api/me/hello`, {
+      const response = await axios.get(`${baseUrl}api/me/hello`, {
         headers: {
           "x-auth-token": token
         }
@@ -62,6 +69,15 @@ const Header = ({cartsize}) => {
     setIsUser(false);
     window.location.href = "/";
   };
+
+  const handleToggle = () => {
+    if (open === true) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+
+    }
+  }
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -113,20 +129,20 @@ const Header = ({cartsize}) => {
               
             </div>
           </Link>
-         
+          {!isLoggedIn && 
+          <Link to="/login" className=" text-xl">Login</Link>
+      }
           
-          <div className="relative group">
-            <FaUser className="text-2xl" />
-            <div className="absolute right-0 mt-2 w-52 bg-white text-gray-800 rounded-md shadow-lg hidden group-hover:block">
+          {isLoggedIn && 
+            <div className="relative ">
+            <FaUser onClick={handleToggle} className="text-2xl cursor-pointer" />
+              <div className={`absolute right-0 mt-2 w-52 bg-white text-gray-800 rounded-md shadow-lg ${open===true?'block':'hidden'}`}>
               <div className="p-6">
-                <h1>Home</h1>
-                {isLoggedIn && userName ? (
+                {isLoggedIn? (
                   <div>
                     <p className="mb-2">
-                      Hello,{" "}
-                      <a href="/user/dashboard" className="hover:font-bold">
-                        {userName}
-                      </a>
+                      Welcome, User
+                      {/* Hello,{" "} */}
                     </p>
                     {isAdmin && (
                       <p>
@@ -183,28 +199,8 @@ const Header = ({cartsize}) => {
               </div>
             </div>
           </div>
-          {isUser && (
-            <>
-              <div className="relative group cursor-pointer">
-                <FaHeart className="text-2xl" />
-                {/* Add wishlist items count here */}
-                {wishlistItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                    {wishlistItems}
-                  </span>
-                )}
-              </div>
-              <div className="relative group cursor-pointer">
-                <FaShoppingCart className="text-2xl" />
-                {/* Add cart items count here */}
-                {cartItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                    {cartItems}
-                  </span>
-                )}
-              </div>
-            </>
-          )}
+          }
+
 
         <div className="w-9 flex flex-col items-end gap-[0.475rem] cursor-pointer group  md:hidden" onClick={()=>setIsOpen(!isOpen)}>
             <div className={`h-[0.25rem] duration-300 relative ${!isOpen? 'w-5 group-hover:w-7': 'rotate-45 translate-y-1.5 w-9'} bg-white`}></div>
